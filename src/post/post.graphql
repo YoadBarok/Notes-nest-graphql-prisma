@@ -1,0 +1,52 @@
+scalar DateTime
+
+type Post {
+  id: Int!
+  createdAt: DateTime
+  title: String!
+  body: String!
+  authorId: Int!
+}
+
+input CreatePostInput {
+  createdAt: DateTime
+  title: String!
+  body: String!
+  authorId: Int!
+}
+
+input OrderByParams {
+  orderByField: String!
+  orderByDirection: String
+}
+
+input WhereParams {
+  whereField: String!
+  intValue: Int
+  stringValue: String
+  dateTimeValue: DateTime
+} 
+
+input UpdatePostInput {
+  title: String!
+  body: String!
+}
+
+type Query {
+  posts(orderBy: OrderByParams, where: WhereParams): [Post]!
+  post(id: Int!): Post
+}
+
+type AllPostsUpdated {
+  posts: [Post]!
+}
+
+type Mutation {
+  createPost(createPostInput: CreatePostInput!): Post!
+  updatePost(id: Int!, updatePostInput: UpdatePostInput!): Post!
+  removePost(id: Int!): Post
+}
+
+type Subscription {
+  allPosts: AllPostsUpdated
+}

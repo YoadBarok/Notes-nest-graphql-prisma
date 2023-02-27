@@ -1,0 +1,41 @@
+scalar DateTime
+
+type User {
+  id: Int!
+  email: String!
+  name: String
+}
+
+input CreateUserInput {
+  email: String!
+  name: String
+  password: String!
+}
+
+input OrderByParams {
+  orderByField: String!
+  orderByDirection: String
+}
+
+input WhereParams {
+  whereField: String!
+  intValue: Int
+  stringValue: String
+  dateTimeValue: DateTime
+} 
+
+input UpdateUserInput {
+  name: String
+  password: String!
+}
+
+type Query {
+  users(orderBy: OrderByParams, where: WhereParams): [User]!
+  user(id: Int!): User
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User
+}

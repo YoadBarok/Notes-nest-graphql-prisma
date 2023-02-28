@@ -15,6 +15,7 @@ import { PostModule } from './post/post.module';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
       typePaths: ['./**/*.graphql'],
+      //add a resolver for the DateTime scalar
       resolvers: { DateTime: GraphQLDateTime },
       subscriptions: {
         'graphql-ws': true,

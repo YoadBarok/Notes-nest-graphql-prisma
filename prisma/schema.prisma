@@ -5,6 +5,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// This settings allows us to use validators (as seen above the email field for User)
 generator nestgraphql {
   provider               = "node node_modules/prisma-nestjs-graphql"
   output                 = "../src/@generated/prisma-nestjs-graphql"

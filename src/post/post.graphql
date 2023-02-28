@@ -6,6 +6,7 @@ type Post {
   title: String!
   body: String!
   authorId: Int!
+  author: User!
 }
 
 input CreatePostInput {

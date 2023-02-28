@@ -49,6 +49,7 @@ export class Post {
     title: string;
     body: string;
     authorId: number;
+    author: User;
 }
 
 export abstract class IQuery {
@@ -87,6 +88,7 @@ export class User {
     id: number;
     email: string;
     name?: Nullable<string>;
+    posts: Nullable<Post>[];
 }
 
 export type DateTime = any;

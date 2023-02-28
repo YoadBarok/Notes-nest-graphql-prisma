@@ -27,12 +27,18 @@ export class UserService {
     return this.prisma.user.findMany({
       orderBy: { [orderByField]: orderByDirection },
       where: { [whereField]: whereValue },
+      include: {
+        posts: true,
+      },
     });
   }
 
   findOne(userWhereUniqueInput: Prisma.UserWhereUniqueInput) {
     return this.prisma.user.findUnique({
       where: userWhereUniqueInput,
+      include: {
+        posts: true,
+      },
     });
   }
 

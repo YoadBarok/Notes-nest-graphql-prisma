@@ -25,6 +25,9 @@ export class PostService {
     return this.prisma.post.findMany({
       orderBy: { [orderByField]: orderByDirection },
       where: { [whereField]: whereValue },
+      include: {
+        author: true,
+      },
     });
   }
 

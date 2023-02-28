@@ -48,6 +48,7 @@ export class PostResolver {
     return removedPost;
   }
 
+  // This subscription is not currently utilized in the UI
   @Subscription()
   allPosts() {
     return pubSub.asyncIterator('allPosts');

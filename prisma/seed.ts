@@ -6,10 +6,19 @@ const prisma = new PrismaClient();
 async function main() {
   await prisma.post.deleteMany();
   await prisma.user.deleteMany();
-
+  
   const firstPassword = await bcrypt.hash('password', 10);
   const secondPassword = await bcrypt.hash('anotherPassword', 10);
-
+  
+  const dummyUser = await prisma.user.create({
+    data: {
+      id: 1,
+      email: 'dummy@user.com',
+      name: 'dummyUser',
+      password: secondPassword,
+    },
+  });
+  
   const firstUser = await prisma.user.create({
     data: {
       email: 'firstUser@email.com',
@@ -54,14 +63,6 @@ async function main() {
     },
   });
 
-  const dummyUser = await prisma.user.create({
-    data: {
-      id: 1,
-      email: 'dummy@user.com',
-      name: 'dummyUser',
-      password: secondPassword,
-    },
-  });
 }
 
 main()

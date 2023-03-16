@@ -1,7 +1,7 @@
 
 
 Make sure to migrate & seed the db before running the server:
-npx prisma migrate dev
+<br>npx prisma migrate dev<br>
 npx prisma db seed
 
 to start in dev mode run:
